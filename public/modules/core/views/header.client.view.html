@@ -1,0 +1,143 @@
+<div class="container" data-ng-controller="HeaderController">
+	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="/#!/" class="navbar-brand">
+			<img src="modules/core/img/angularjs.png" width="30" height="30">
+		</a>
+	</div>
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">SHOP
+					<span class="caret"></span></a>
+				<ul class="dropdown-menu multi-column columns-3">
+					<div class="row">
+						<div class="col-sm-4">
+							<ul class="multi-column-dropdown">
+								<li>
+									<p><strong> Women Collection </strong></p>
+								</li>
+								<li><a href="#"> Kameez </a></li>
+								<li><a href="#"> Tops </a></li>
+								<li><a href="#"> Shoes </a></li>
+								<li><a href="#"> T shirt </a></li>
+								<li><a href="#"> TSHOP </a></li>
+								<li><a href="#"> Party Dress </a></li>
+								<li><a href="#"> Women Fragrances </a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul class="multi-column-dropdown">
+								<li>
+									<p><strong> Men Collection </strong></p>
+								</li>
+								<li><a href="#"> Panjabi </a></li>
+								<li><a href="#"> Male Fragrances </a></li>
+								<li><a href="#"> Scarf </a></li>
+								<li><a href="#"> Sandal </a></li>
+								<li><a href="#"> Underwear </a></li>
+								<li><a href="#"> Winter Collection </a></li>
+								<li><a href="#"> Men Accessories </a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul class="multi-column-dropdown">
+								<li>
+									<p><strong> Top Brands </strong></p>
+								</li>
+								<li><a href="#"> Diesel </a></li>
+								<li><a href="#"> Farah </a></li>
+								<li><a href="#"> G-Star RAW </a></li>
+								<li><a href="#"> Lyle &amp; Scott </a></li>
+								<li><a href="#"> Pretty Green </a></li>
+								<li><a href="#"> TSHOP </a></li>
+								<li><a href="#"> TANJIM </a></li>
+							</ul>
+						</div>
+					</div>
+				</ul>
+			</li>
+			<li><a href="#">New Products</a></li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+			<!--<li><a href="account.html">MY ACCOUNT</a></li>-->
+			<li><a href="/#!/signin">SIGN IN</a></li>
+			<li><a href="create-account.html">CREATE ACCOUNT</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/#!/settings/profile">Edit Profile</a>
+					</li>
+					<li>
+						<a href="/#!/settings/accounts">Manage Social Accounts</a>
+					</li>
+					<li data-ng-show="authentication.user.provider === 'local'">
+						<a href="/#!/settings/password">Change Password</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="/auth/signout">Signout</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<!--<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">-->
+		<!--<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">-->
+			<!--<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">-->
+				<!--<a ng-switch-when="dropdown" class="dropdown-toggle">-->
+					<!--<span data-ng-bind="item.title"></span>-->
+					<!--<b class="caret"></b>-->
+				<!--</a>-->
+				<!--<ul ng-switch-when="dropdown" class="dropdown-menu">-->
+					<!--<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">-->
+						<!--<a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>-->
+					<!--</li>-->
+				<!--</ul>-->
+				<!--<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>-->
+			<!--</li>-->
+		<!--</ul>-->
+		<!--<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">-->
+			<!--<li ui-route="/signup" ng-class="{active: $uiRoute}">-->
+				<!--<a href="/#!/signup">Sign Up</a>-->
+			<!--</li>-->
+			<!--<li class="divider-vertical"></li>-->
+			<!--<li ui-route="/signin" ng-class="{active: $uiRoute}">-->
+				<!--<a href="/#!/signin">Sign In</a>-->
+			<!--</li>-->
+		<!--</ul>-->
+		<!--<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">-->
+			<!--<li class="dropdown">-->
+				<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+					<!--<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>-->
+				<!--</a>-->
+				<!--<ul class="dropdown-menu">-->
+					<!--<li>-->
+						<!--<a href="/#!/settings/profile">Edit Profile</a>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<a href="/#!/settings/accounts">Manage Social Accounts</a>-->
+					<!--</li>-->
+					<!--<li data-ng-show="authentication.user.provider === 'local'">-->
+						<!--<a href="/#!/settings/password">Change Password</a>-->
+					<!--</li>-->
+					<!--<li class="divider"></li>-->
+					<!--<li>-->
+						<!--<a href="/auth/signout">Signout</a>-->
+					<!--</li>-->
+				<!--</ul>-->
+			<!--</li>-->
+		<!--</ul>-->
+	<!--</nav>-->
+</div>
